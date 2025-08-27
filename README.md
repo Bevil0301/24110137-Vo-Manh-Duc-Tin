@@ -25,3 +25,5 @@ Bộ sưu tập 10 bài tập lập trình C++ bao gồm các khái niệm Lập
 
 ├── README.md 
 
+##⚙️ Hướng dẫn build và chạy
+Trên Linux / macOS / WSL:
