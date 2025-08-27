@@ -27,7 +27,7 @@ Bộ sưu tập 10 bài tập lập trình C++ bao gồm các khái niệm Lập
 
 ## ⚙️ Hướng dẫn build và chạy
 
-Trên Linux / macOS / WSL:
+# Trên Linux / macOS / WSL:
 
 Ví dụ với file Car.cpp:
 
@@ -41,7 +41,7 @@ g++ Circle.cpp -o Circle
 
 ./Circle
 
-Trên Windows (MinGW g++):
+# Trên Windows (MinGW g++):
 
 g++ Car.cpp -o Car.exe
 
