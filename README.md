@@ -32,8 +32,19 @@ Trên Linux / macOS / WSL:
 Ví dụ với file Car.cpp:
 
 g++ Car.cpp -o Car
+
 ./Car
+
 Ví dụ với file Circle.cpp:
 
 g++ Circle.cpp -o Circle
+
 ./Circle
+
+Trên Windows (MinGW g++):
+
+g++ Car.cpp -o Car.exe
+
+Car.exe
+
+Làm tương tự cho từng file khác (Book.cpp, Account.cpp, …).
