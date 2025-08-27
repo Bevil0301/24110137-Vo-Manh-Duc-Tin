@@ -1,84 +1,83 @@
 #include <iostream>
-#include <string>
-
+#include <string>  
 using namespace std;
 
+// Lớp Car đại diện cho một chiếc xe hơi
 class Car {
-private:
+private:  // Sử dụng encapsulation để bảo vệ dữ liệu
     string brand;
     int year;
-    string model;
-    double mileage;
 
 public:
     // Constructor mặc định
-    Car() : brand("Unknown"), year(0), model("Unknown"), mileage(0.0) {}
-    
-    // Constructor với tham số
-    Car(string carBrand, int carYear, string carModel, double carMileage = 0.0) 
-        : brand(carBrand), year(carYear), model(carModel), mileage(carMileage) {}
-    
-    // Getter và Setter methods
-    string getBrand() const { return brand; }
-    void setBrand(string carBrand) { brand = carBrand; }
-    
-    int getYear() const { return year; }
-    void setYear(int carYear) { 
-        if (carYear > 1886) { // Kiểm tra năm hợp lệ (năm sản xuất ô tô đầu tiên)
-            year = carYear; 
-        }
+    Car() {
+        brand = "Unknown";
+        year = 0;
+        cout << "A new car object has been created with default values." << endl;
     }
     
-    string getModel() const { return model; }
-    void setModel(string carModel) { model = carModel; }
-    
-    double getMileage() const { return mileage; }
-    void setMileage(double carMileage) { 
-        if (carMileage >= 0) {
-            mileage = carMileage; 
-        }
+    // Constructor với tham số để khởi tạo giá trị
+    Car(string b, int y) {
+        brand = b;
+        year = y;
+        cout << "A new car object has been created: " << b << " (" << y << ")" << endl;
     }
     
-    // Phương thức hiển thị thông tin
-    void displayInfo() const {
+    // Phương thức hiển thị thông tin xe
+    void displayInfo() {
         cout << "Car Information:" << endl;
         cout << "Brand: " << brand << endl;
-        cout << "Model: " << model << endl;
         cout << "Year: " << year << endl;
-        cout << "Mileage: " << mileage << " km" << endl;
+        cout << "------------------------" << endl;
     }
     
-    // Phương thức mô phỏng lái xe
-    void drive(double distance) {
-        if (distance > 0) {
-            mileage += distance;
-            cout << "Drove " << distance << " km. Total mileage: " << mileage << " km" << endl;
+    // Getter và Setter cho thuộc tính brand (thể hiện encapsulation)
+    void setBrand(string b) {
+        brand = b;
+    }
+    
+    string getBrand() {
+        return brand;
+    }
+    
+    // Getter và Setter cho thuộc tính year
+    void setYear(int y) {
+        if (y > 1886) {  // Kiểm tra tính hợp lệ (năm sản xuất xe hơi đầu tiên)
+            year = y;
+        } else {
+            cout << "Invalid year! The first car was invented in 1886." << endl;
         }
+    }
+    
+    int getYear() {
+        return year;
     }
 };
 
 int main() {
-    // Tạo đối tượng Car sử dụng constructor có tham số
-    Car car1("Toyota", 2020, "Camry", 15000.5);
+    cout << "=== CAR INFORMATION SYSTEM ===" << endl;
+    
+    // Tạo đối tượng car1 sử dụng constructor mặc định
+    Car car1;
+    car1.setBrand("Toyota");
+    car1.setYear(2020);
     car1.displayInfo();
     
-    cout << "\n";
-    
-    // Tạo đối tượng Car khác
-    Car car2("Honda", 2022, "Civic");
+    // Tạo đối tượng car2 sử dụng constructor có tham số
+    Car car2("Honda", 2018);
     car2.displayInfo();
     
-    cout << "\n";
+    // Tạo đối tượng car3 và thử nghiệm với năm không hợp lệ
+    Car car3;
+    car3.setBrand("Ford");
+    car3.setYear(1800);  // Năm không hợp lệ
+    car3.setYear(2022);  // Năm hợp lệ
+    car3.displayInfo();
     
-    // Mô phỏng lái xe
-    car2.drive(250.7);
-    car2.drive(150.3);
+    // Truy cập thông tin thông qua getter
+    cout << "Car 1 brand: " << car1.getBrand() << endl;
+    cout << "Car 2 year: " << car2.getYear() << endl;
     
-    cout << "\n";
-    
-    // Hiển thị thông tin cập nhật
-    cout << "Updated information for " << car2.getBrand() << " " << car2.getModel() << ":" << endl;
-    cout << "Current mileage: " << car2.getMileage() << " km" << endl;
-    
+    cout << "=== END OF PROGRAM ===" << endl;
     return 0;
 }
